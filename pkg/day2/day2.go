@@ -23,19 +23,6 @@ func getHandScore(hand string) int {
 	}
 }
 
-func getHandName(hand string) string {
-	switch hand {
-	case "A", "X":
-		return "rock"
-	case "B", "Y":
-		return "paper"
-	case "C", "Z":
-		return "scissors"
-	default:
-		panic("Invalid hand")
-	}
-}
-
 func compareHands(hand1 string, hand2 string) int {
 	if winingHand[hand1] == hand2 {
 		return 6
@@ -70,8 +57,6 @@ func GetScore(file string) int {
 
 		round := compareHands(oponent, me)
 		myHand := getHandScore(me)
-
-		// log.Println(i, getHandName(oponent), getHandName(me), round, myHand)
 
 		sum += round
 		sum += myHand
