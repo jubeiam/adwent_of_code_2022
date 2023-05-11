@@ -79,18 +79,16 @@ func SumOfTheBadgesOfThreeElf(file string) int {
 	for _, row := range rows {
 		if one == "" {
 			one = row
-			// log.Println("ONE", one)
+
 			continue
 		}
 
 		if two == "" {
 			two = findCommonChars(one, row)
-			// log.Println("TWO", two, row)
 			continue
 		}
 
 		commonChar = findCommonChar(two, row)
-		// log.Println("THREE", commonChar, row)
 
 		priority := char2priority(commonChar)
 		sum += priority
