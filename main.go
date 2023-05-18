@@ -4,6 +4,7 @@ import (
 	"advent_of_code/pkg/day1"
 	"advent_of_code/pkg/day2"
 	"advent_of_code/pkg/day3"
+	"advent_of_code/pkg/day4"
 	"log"
 )
 
@@ -16,4 +17,6 @@ func main() {
 
 	log.Println(day3.SumOfThePrioritiesOfBothCompartmentsOfEachRucksack("/pkg/day3/input.txt"))
 	log.Println(day3.SumOfTheBadgesOfThreeElf("/pkg/day3/input.txt"))
+
+	log.Println(day4.FullyContains("/pkg/day4/input.txt"))
 }
