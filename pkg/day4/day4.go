@@ -18,13 +18,15 @@ type Pair struct {
 	Due Assignment
 }
 
-func (a Assignment) Contains(b Assignment) bool {
-
+func (a Assignment) Overlaps(b Assignment) bool {
 	return a.Min <= b.Min && b.Max <= a.Max
 }
 
-func FullyContains(file string) int {
+func (a Assignment) Contains(b Assignment) bool {
+	return b.Min <= a.Max && b.Max >= a.Min
+}
 
+func normalizeParirs(file string) []Pair {
 	listOfPairs := []Pair{}
 
 	rows := helpers.SplitByNewline(helpers.LoadFile(file))
@@ -48,6 +50,32 @@ func FullyContains(file string) int {
 
 		listOfPairs = append(listOfPairs, p)
 	}
+
+	return listOfPairs
+}
+
+func FullyContains(file string) int {
+	listOfPairs := normalizeParirs(file)
+	found := 0
+	for _, pair := range listOfPairs {
+
+		if pair.Uno.Overlaps(pair.Due) {
+			found++
+			fmt.Println(pair.Uno.Original, "overlaps", pair.Due.Original)
+			continue
+		}
+
+		if pair.Due.Overlaps(pair.Uno) {
+			found++
+			fmt.Println(pair.Due.Original, "overlaps", pair.Uno.Original)
+		}
+	}
+
+	return found
+}
+
+func AnyContains(file string) int {
+	listOfPairs := normalizeParirs(file)
 
 	found := 0
 	for _, pair := range listOfPairs {

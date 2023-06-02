@@ -19,4 +19,6 @@ func main() {
 	log.Println(day3.SumOfTheBadgesOfThreeElf("/pkg/day3/input.txt"))
 
 	log.Println(day4.FullyContains("/pkg/day4/input.txt"))
+	log.Println(day4.AnyContains("/pkg/day4/input.txt"))
+
 }
